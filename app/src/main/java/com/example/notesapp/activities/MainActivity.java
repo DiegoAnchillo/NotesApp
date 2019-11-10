@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private FloatingActionButton addnote;
-    private TextView hello;
-    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +31,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         addnote=findViewById(R.id.floatingActionButton);
-        hello=findViewById(R.id.name_user);
-
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        String username=sharedPreferences.getString("username",null);
-
-        User user=UserRepository.getUser(username);
-        hello.setText(user.getFullname());
 
 
         addnote.setOnClickListener(new View.OnClickListener() {

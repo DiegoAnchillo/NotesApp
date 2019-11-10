@@ -50,23 +50,22 @@ public class LoginActivity extends AppCompatActivity {
 
         if (user_input.isEmpty()||password_input.isEmpty()){
             Toast.makeText(this,"Rellenar estos campos",Toast.LENGTH_LONG).show();
-        }else{
+        }
 
-            User user= UserRepository.login(user_input,password_input);
-
-            if (user==null){
-                Toast.makeText(this, "Usuario o Contraseña invalida", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            Toast.makeText(this, "Hola " + user.getFullname(), Toast.LENGTH_SHORT).show();
+        User user= UserRepository.login(user_input,password_input);
+        if (user==null){
+            Toast.makeText(this, "Usuario o Contraseña invalida", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Toast.makeText(this, "Hola " + user.getFullname(), Toast.LENGTH_SHORT).show();
+        goNotes();
 
         }
 
-        goNotes();
-    }
-    private void goNotes(){
-        startActivity(new Intent(this,MainActivity.class));
+
+    public void goNotes(){
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 
     public void register(){
